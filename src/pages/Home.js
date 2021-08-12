@@ -68,7 +68,7 @@ function Home() {
 
   return (
     <div className="App">
-      <h1>Welcome, PK</h1>
+      <h1 className="flex justify-center">Let's get shit done!</h1>
       <h4>Your tasks</h4>
 
       <div className="todos">
