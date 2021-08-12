@@ -11,7 +11,13 @@ function Home() {
   }, []);
 
   const GetTodos = () => {
-    fetch(api_base + '/todos')
+    const token = localStorage.getItem('id_token');
+
+    fetch(api_base + '/todos', {
+      headers: {
+        authorization: token ? `Bearer ${token}` : '',
+      },
+    })
       .then((res) => res.json())
       .then((data) => setTodos(data))
       .catch((err) => console.error('Error: ', err));
@@ -32,10 +38,12 @@ function Home() {
   };
 
   const addTodo = async () => {
+    const token = localStorage.getItem('id_token');
     const data = await fetch(api_base + '/todo/new', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        authorization: token ? `Bearer ${token}` : '',
       },
       body: JSON.stringify({
         text: newTodo,
@@ -48,10 +56,14 @@ function Home() {
     setNewTodo('');
   };
 
-  const deleteTodo = async (id) => {
-    const data = await fetch(api_base + '/todo/delete/' + id, { method: 'DELETE' }).then((res) => res.json());
-
-    setTodos((todos) => todos.filter((todo) => todo._id !== data.result._id));
+  const deleteTodo = (id) => {
+    console.log(id);
+    fetch(api_base + '/todo/delete/' + id, { method: 'DELETE' })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setTodos((todos) => todos.filter((todo) => todo._id !== data._id));
+      });
   };
 
   return (
