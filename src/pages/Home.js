@@ -68,7 +68,7 @@ function Home() {
 
   return (
     <div className="App">
-      <h1 className="flex justify-center">Let's get shit done!</h1>
+      {/* <h1 className="flex justify-center">Let's get shit done!</h1> */}
       <h4>Your tasks</h4>
 
       <div className="todos">
@@ -106,7 +106,7 @@ function Home() {
             <h3>Add Task</h3>
             <input
               type="text"
-              className="add-todo-input"
+              className="add-todo-input text-pink-500"
               onChange={(e) => setNewTodo(e.target.value)}
               value={newTodo}
             />
