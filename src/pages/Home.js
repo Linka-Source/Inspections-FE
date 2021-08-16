@@ -69,7 +69,7 @@ function Home() {
   return (
     <div className="App">
       {/* <h1 className="flex justify-center">Let's get shit done!</h1> */}
-      <h4>Your tasks</h4>
+      {/* <h4>Your tasks</h4> */}
 
       <div className="todos">
         {todos.length > 0 ? (
@@ -89,7 +89,7 @@ function Home() {
             </div>
           ))
         ) : (
-          <p>You currently have no tasks</p>
+          <p></p>
         )}
       </div>
 
